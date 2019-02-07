@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">TeamworkApp</string>
+    <string name="server_error">Server Error</string>
+    <string name="no_network">No Network Error</string>
+    <string name="unauthorised_error">Unauthorised</string>
+    <string name="api_key">twp_Fhbuop12t6sS3TmMm8RJnPk2LTUM</string>
+    <string name="sort_label">Sort</string>
+    <string name="refresh_label">Refresh</string>
+    <string name="loading_projects">Loading Projects</string>
+    <string name="saved_latest_projects">Saved latest data</string>
+    <string name="success">Success</string>
+    <string name="error">Error</string>
+</resources>

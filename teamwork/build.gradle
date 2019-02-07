@@ -1,0 +1,45 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+
+
+android {
+  compileSdkVersion 27
+
+  compileOptions {
+    sourceCompatibility JavaVersion.VERSION_1_8
+    targetCompatibility JavaVersion.VERSION_1_8
+  }
+
+  defaultConfig {
+    minSdkVersion 21
+    targetSdkVersion 27
+    versionCode 1
+    versionName "1.0"
+
+    testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+  }
+
+  buildTypes {
+    release {
+      minifyEnabled false
+      proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+    }
+  }
+}
+
+dependencies {
+  implementation fileTree(include: ['*.jar'], dir: 'libs')
+  implementation Deps.rxAndroid1
+  implementation Deps.rxJava
+  implementation Deps.mockito
+  implementation Deps.retrofit
+  implementation Deps.retrofitConverters
+  implementation Deps.retrofitGsonConverter
+  testImplementation Deps.junit
+  api Deps.room
+  kapt Deps.roomCompiler
+  implementation 'com.squareup.okhttp3:logging-interceptor:3.11.0'
+}
+repositories {
+  mavenCentral()
+}
