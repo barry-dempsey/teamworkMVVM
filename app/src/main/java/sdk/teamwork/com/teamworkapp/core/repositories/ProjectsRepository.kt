@@ -15,7 +15,9 @@ interface ProjectsRepository {
 
     class Network
     @Inject constructor(private val networkHandler: NetworkHandler,
-                        private val service: ProjectService) : ProjectsRepository {
+                        private val service: ProjectService
+    ) : ProjectsRepository
+    {
 
         override fun projects(): Either<Failure, Projects> {
             return when (networkHandler.isConnected) {

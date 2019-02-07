@@ -19,13 +19,6 @@ class MainActivity : BaseActivity(){
     return super.onCreateOptionsMenu(menu)
   }
 
-//  fun isConnectedOrConnecting(f: ()-> Unit) {
-//    val activeNetworkInfo = connectivityManager().activeNetworkInfo
-//    if (activeNetworkInfo != null && activeNetworkInfo.isConnectedOrConnecting) {
-//      f()
-//    }
-//  }
-
   override fun onBackPressed() {
     if (supportFragmentManager.backStackEntryCount == 0) {
       finish()
