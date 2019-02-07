@@ -15,6 +15,8 @@ abstract class BaseFragment : Fragment() {
 
     abstract fun layoutId(): Int
 
+    abstract fun setupViewModel()
+
     val appComponent: ApplicationComponent by lazy(mode = LazyThreadSafetyMode.NONE) {
         (activity?.application as AndroidApplication).appComponent
     }
@@ -23,6 +25,11 @@ abstract class BaseFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View =
             inflater.inflate(layoutId(), container, false)
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        setupViewModel()
+    }
 
     open fun onBackPressed() {}
 

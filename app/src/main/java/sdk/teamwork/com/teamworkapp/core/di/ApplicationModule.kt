@@ -8,6 +8,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import sdk.teamwork.com.teamworkapp.core.AUTH_HOST
 import sdk.teamwork.com.teamworkapp.core.AndroidApplication
+import sdk.teamwork.com.teamworkapp.core.repositories.ProjectsRepository
 import javax.inject.Singleton
 
 @Module
@@ -27,4 +28,6 @@ class ApplicationModule(private var application: AndroidApplication) {
         val okHttpClientBuilder: OkHttpClient.Builder = OkHttpClient.Builder()
         return okHttpClientBuilder.build()
     }
+
+    @Provides @Singleton fun provideUserRepository(dataSource: ProjectsRepository.Network): ProjectsRepository = dataSource
 }
