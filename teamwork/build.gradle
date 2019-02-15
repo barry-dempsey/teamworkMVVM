@@ -2,7 +2,6 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
 
-
 android {
   compileSdkVersion 27
 
@@ -36,10 +35,14 @@ dependencies {
   implementation Deps.retrofit
   implementation Deps.retrofitConverters
   implementation Deps.retrofitGsonConverter
+  implementation Deps.daggerProcessor
+  implementation Deps.dagger
+  implementation Deps.daggerCompiler
   testImplementation Deps.junit
   api Deps.room
   kapt Deps.roomCompiler
   implementation 'com.squareup.okhttp3:logging-interceptor:3.11.0'
+  implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 }
 repositories {
   mavenCentral()

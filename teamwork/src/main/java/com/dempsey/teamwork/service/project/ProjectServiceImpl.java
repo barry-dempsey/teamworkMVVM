@@ -156,11 +156,6 @@ public class ProjectServiceImpl implements ProjectService {
     }
 
     @Override
-    public retrofit2.Call<Projects> getProjects() {
-        return apiClient.withPath(PROJECTS_URL_PATH).get().blockingFirst();
-    }
-
-    @Override
     public void getAllProjects(@Nullable GetProjectParameter getProjectParameter,
                                 @Nullable final RequestCallback<List<Project>> callback) {
         createGetAllProjectsExecutor(getProjectParameter)
