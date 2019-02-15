@@ -1,6 +1,9 @@
 package sdk.teamwork.com.teamworkapp.core.di
 
 import android.content.Context
+import com.dempsey.teamwork.data.net.ApiClient
+import com.dempsey.teamwork.service.project.ProjectServiceImpl
+import com.google.gson.Gson
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient
@@ -24,10 +27,14 @@ class ApplicationModule(private var application: AndroidApplication) {
             .build()
     }
 
+    @Provides @Singleton fun provideProjectsService(): ProjectServiceImpl {
+        return ProjectServiceImpl(ApiClient.Builder().build(), Gson())
+    }
+
     private fun createClient(): OkHttpClient {
         val okHttpClientBuilder: OkHttpClient.Builder = OkHttpClient.Builder()
         return okHttpClientBuilder.build()
     }
 
-    @Provides @Singleton fun provideUserRepository(dataSource: ProjectsRepository.Network): ProjectsRepository = dataSource
+    @Provides @Singleton fun provideProjectsRepository(dataSource: ProjectsRepository.Network): ProjectsRepository = dataSource
 }

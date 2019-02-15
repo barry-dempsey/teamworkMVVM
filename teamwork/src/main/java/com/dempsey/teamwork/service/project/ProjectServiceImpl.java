@@ -21,7 +21,7 @@ import java.util.List;
 import okhttp3.Call;
 import okhttp3.Callback;
 
-class ProjectServiceImpl implements ProjectService {
+public class ProjectServiceImpl implements ProjectService {
 
     private static final String PROJECTS_URL_PATH = "/projects.json";
     private static final String PROJECTS_WITH_ID_URL_PATH = "/projects/%s.json";
@@ -35,7 +35,7 @@ class ProjectServiceImpl implements ProjectService {
     private final ApiClient apiClient;
     private final Gson gson;
 
-    ProjectServiceImpl(ApiClient apiClient, Gson gson) {
+    public ProjectServiceImpl(ApiClient apiClient, Gson gson) {
         this.apiClient = apiClient;
         this.gson = gson;
     }
@@ -153,6 +153,11 @@ class ProjectServiceImpl implements ProjectService {
                 .get()
                 .map(Util::getContent)
                 .map(content -> gson.fromJson(content, Projects.class));
+    }
+
+    @Override
+    public retrofit2.Call<Observable<Projects>> getProjects() {
+        return null;
     }
 
     @Override

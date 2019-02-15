@@ -1,7 +1,7 @@
 package sdk.teamwork.com.teamworkapp.core.repositories
 
 import com.dempsey.teamwork.data.model.Projects
-import com.dempsey.teamwork.service.project.ProjectService
+import com.dempsey.teamwork.service.project.ProjectServiceImpl
 import io.reactivex.Observable
 import retrofit2.Call
 import sdk.teamwork.com.teamworkapp.core.exception.Failure
@@ -14,14 +14,14 @@ interface ProjectsRepository {
     fun projects(): Either<Failure, Projects>
 
     class Network
-    @Inject constructor(private val networkHandler: NetworkHandler,
-                        private val service: ProjectService
+    @Inject constructor(
+        private val networkHandler: NetworkHandler,
+        private val service: ProjectServiceImpl
     ) : ProjectsRepository
     {
-
         override fun projects(): Either<Failure, Projects> {
             return when (networkHandler.isConnected) {
-                true -> request(service.allProjects, { it.map { it.to } }, Observable.empty())
+                true -> request(service.projects, { it }, Projects())
                 false, null -> Either.Left(Failure.NetworkConnection)
             }
         }

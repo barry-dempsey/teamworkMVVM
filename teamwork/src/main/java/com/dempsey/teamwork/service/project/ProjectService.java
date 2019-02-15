@@ -8,6 +8,7 @@ import com.dempsey.teamwork.service.RequestCallback;
 import io.reactivex.Observable;
 import io.reactivex.annotations.NonNull;
 import io.reactivex.annotations.Nullable;
+import retrofit2.Call;
 import java.util.List;
 
 public interface ProjectService {
@@ -23,6 +24,7 @@ public interface ProjectService {
 
     void getAllProjects(@Nullable RequestCallback<List<Project>> callback);
     Observable<Projects> getAllProjects();
+    Call<Observable<Projects>>getProjects();
 
     void getAllProjects(@Nullable GetProjectParameter getProjectParameter, @Nullable RequestCallback<List<Project>> callback);
     Observable<List<Project>> getAllProjects(@Nullable GetProjectParameter getProjectParameter);
