@@ -20,6 +20,6 @@ class NetworkModule {
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 
-    private fun createClient(): OkHttpClient = OkHttpClient()
+    private fun createClient(): OkHttpClient = OkHttpClient()//TODO to add props
 
 }

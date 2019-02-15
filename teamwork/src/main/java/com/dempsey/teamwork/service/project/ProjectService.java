@@ -24,7 +24,7 @@ public interface ProjectService {
 
     void getAllProjects(@Nullable RequestCallback<List<Project>> callback);
     Observable<Projects> getAllProjects();
-    Call<Observable<Projects>>getProjects();
+    Call<Projects>getProjects();
 
     void getAllProjects(@Nullable GetProjectParameter getProjectParameter, @Nullable RequestCallback<List<Project>> callback);
     Observable<List<Project>> getAllProjects(@Nullable GetProjectParameter getProjectParameter);

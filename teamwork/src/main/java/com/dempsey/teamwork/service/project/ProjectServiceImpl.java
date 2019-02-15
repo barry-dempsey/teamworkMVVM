@@ -156,8 +156,8 @@ public class ProjectServiceImpl implements ProjectService {
     }
 
     @Override
-    public retrofit2.Call<Observable<Projects>> getProjects() {
-        return null;
+    public retrofit2.Call<Projects> getProjects() {
+        return apiClient.withPath(PROJECTS_URL_PATH).get().blockingFirst();
     }
 
     @Override
