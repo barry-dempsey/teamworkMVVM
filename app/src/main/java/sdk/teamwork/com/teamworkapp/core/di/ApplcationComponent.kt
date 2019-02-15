@@ -9,7 +9,7 @@ import sdk.teamwork.com.teamworkapp.core.repositories.ProjectsRepository
 import javax.inject.Singleton
 
 @Singleton
-@Component(modules = [ApplicationModule::class, ViewModelModule::class])
+@Component(modules = [ApplicationModule::class, ViewModelModule::class, NetworkModule::class])
 interface ApplicationComponent {
 
     fun inject(application: AndroidApplication)

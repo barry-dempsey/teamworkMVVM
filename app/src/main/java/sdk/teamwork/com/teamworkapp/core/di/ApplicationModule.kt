@@ -19,22 +19,7 @@ class ApplicationModule(private var application: AndroidApplication) {
 
     @Provides @Singleton fun provideApplicationContext(): Context = application
 
-    @Provides @Singleton fun provideRetrofit(): Retrofit {
-        return Retrofit.Builder()
-            .baseUrl(AUTH_HOST)
-            .client(createClient())
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
-    }
-
-    @Provides @Singleton fun provideProjectsService(): ProjectServiceImpl {
-        return ProjectServiceImpl(ApiClient.Builder().build(), Gson())
-    }
-
-    private fun createClient(): OkHttpClient {
-        val okHttpClientBuilder: OkHttpClient.Builder = OkHttpClient.Builder()
-        return okHttpClientBuilder.build()
-    }
+    @Provides @Singleton fun provideProjectsService(): ProjectServiceImpl = ProjectServiceImpl(ApiClient.Builder().build(), Gson())
 
     @Provides @Singleton fun provideProjectsRepository(dataSource: ProjectsRepository.Network): ProjectsRepository = dataSource
 }
